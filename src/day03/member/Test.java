@@ -11,5 +11,14 @@ public class Test {
         mr.addMember(thief);
 
         mr.showMembers();
+
+        System.out.println("================");
+
+        String email = "abc@def.com";
+        boolean flag1 = mr.isDuplicatedEmail(email);
+        System.out.println("flag1 = " + flag1);
+
+        Member foundMember = mr.findMemberByEmail(email);
+        System.out.println("foundMember.inform() = " + foundMember.inform());
     }
 }
