@@ -1,8 +1,10 @@
-package day03.member;
+package day03.player.member;
 
 import java.time.LocalDate;
 
-// 회원 설계도
+// 객체지향의 중요원칙 중 하나는 단일 책임 원칙
+// SRP: 하나의 클래스는 하나의 책임만 가져라
+// 회원 설계도  (회원 1명에 대한 정보 관리 책임)
 public class Member {
 
     int memberId; // 회원 식별번호
@@ -13,11 +15,7 @@ public class Member {
     int age; // 나이
     LocalDate regDate; // 회원가입일
 
-    // 객체지향의 중요원칙 중 하나는 단일 책임 원칙
-    // SRP: 하나의 클래스는 하나의 책임만 가져라
-    // 회원 설계도 (회원 1명에 대한 정보 관리 책임)
-    public Member(int memberId, String email, String password,
-                  String memberName, Gender gender, int age) {
+    public Member(int memberId, String email, String password, String memberName, Gender gender, int age) {
         this.memberId = memberId;
         this.email = email;
         this.password = password;
@@ -30,12 +28,11 @@ public class Member {
     // 회원정보를 문자열로 만들어서 리턴하는 기능
     String inform() {
         String convertGender = this.gender == Gender.MALE ? "남성" : "여성";
-        return String.format("# %d번 | %s | %s | %s | %d세",
-                this.memberId, this.email, this.memberName,
-                convertGender, this.age);
+        return String.format("# %d번 | %s | %s | %s | %d세"
+                , this.memberId, this.email, this.memberName
+                , convertGender, this.age
+        );
     }
-
-
 
     // 회원 정보를 디테일 출력
     void showDetailInfo() {

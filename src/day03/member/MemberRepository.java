@@ -76,6 +76,17 @@ public class MemberRepository {
         return false;
     }
 
+    // 이메일로 인덱스를 찾는 메서드
+    int findMemberIndexByEmail(String email) {
+        for (int i = 0; i < memberList.length; i++) {
+            Member member = memberList[i];
+            if (email.equals(member.email)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     /**
      * 이메일을 통해 특정 회원 객체를 찾아서 반환하는 메서드
      * @param1 email - 탐색할 멤버객체의 이메일
@@ -105,7 +116,7 @@ public class MemberRepository {
     }
 
     /**
-     * 배열의 길이를 반환하는 메서드
+     * 배열의 길이(회원의 수)를 반환하는 메서드
      */
     public int howManyUsers() {
         return memberList.length;
