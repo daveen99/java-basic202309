@@ -8,7 +8,7 @@ public class StringList {
     String[] sArr;
 
     // 생성자를 통해 배열을 초기화
-    StringList() {
+    public StringList() {
         sArr = new String[0];
     }
     StringList(String... initData) {
@@ -17,7 +17,9 @@ public class StringList {
             sArr[i] = initData[i];
         }
     }
-
+    public String[] getsArr() {
+        return sArr;
+    }
     // 배열 맨 끝데이터 제거
     void pop() {
         String[] temp = new String[sArr.length-1];
@@ -27,7 +29,7 @@ public class StringList {
         sArr = temp;
     }
 
-    void push(String push) {
+    public void push(String push) {
         String[] temp = new String[sArr.length+1];
         for (int i = 0; i < sArr.length; i++) {
             temp[i] = sArr[i];
