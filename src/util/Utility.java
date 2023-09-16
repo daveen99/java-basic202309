@@ -12,7 +12,7 @@ public class Utility {
     }
     // 문자열을 입력받는 기능
     public static String input(String message) {
-        System.out.println(message);
+        System.out.print(message);
         return sc.nextLine();
     }
 }
