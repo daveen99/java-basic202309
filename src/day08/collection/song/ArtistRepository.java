@@ -22,6 +22,8 @@ public class ArtistRepository {
             }
         }
         return false;
+
+        // artistList.containsKey(artist)   키값 체크하는 메서드
     }
 
     // 노래 중복 체크
@@ -38,7 +40,13 @@ public class ArtistRepository {
         return false;
     }
 
-    // 노래 등록하기
+
+
+    /**
+     * 노래 등록하기
+     * @param name - 사용자의 입력 가수이름
+     * @param song - 사용자의 입력 노래이름
+     */
     public void setSong(String name, String song) {
         Set<String> songList = new HashSet<>();
         songList.add(song);
@@ -51,6 +59,7 @@ public class ArtistRepository {
         songList.add(song);
         artistList.get(name).setSongList(songList);
     }
+    // Ctrl + Alt + M << 메서드 리팩토링 단축 커맨드
 
 
     public void songInfo(String name) {
@@ -64,5 +73,11 @@ public class ArtistRepository {
             countNum += 1;
         }
         return countNum;
+
+        // artistList.size()  <<<<
+    }
+
+    public static Map<String, Artist> getArtistList() {
+        return artistList;
     }
 }

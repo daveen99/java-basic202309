@@ -3,6 +3,7 @@ package day08.collection.song;
 import java.util.Scanner;
 
 import static day08.collection.song.ArtistRepository.counter;
+import static util.Utility.input;
 import static util.Utility.makeLine;
 
 public class ArtistView {
@@ -17,13 +18,14 @@ public class ArtistView {
     public static void start() {
         int countArtist = counter();
         System.out.println("\n****** 음악 관리 프로그램 ******");
-        System.out.println("# 현재 등록된 가수: " +  countArtist + "명");
+        System.out.println("# 현재 등록된 가수: " + countArtist + "명");
         System.out.println("# 1. 노래 등록하기");
         System.out.println("# 2. 노래 정보 검색");
         System.out.println("# 3. 프로그램 종료");
         makeLine();
         getChoice();
     }
+
     public static void getChoice() {
         System.out.print(">> ");
         String userInput = sc.nextLine();
@@ -42,6 +44,7 @@ public class ArtistView {
             case "3":
                 System.out.println("ㅡ 프로그램을 종료합니다... ");
                 break;
+            // System.exit(0);
             default:
                 System.out.println("ㅡ (경고!) 올바른 값을 입력해주세요.");
                 pressEnter();
@@ -63,7 +66,11 @@ public class ArtistView {
         System.out.print("ㅡ 가수명: ");
         String name = sc.nextLine();
 
-        ar.songInfo(name);
+        if (ar.artistCheck(name)) {
+            ar.songInfo(name);
+        } else {
+            System.out.println("ㅡ 등록되지 않은 가수입니다.");
+        }
     }
 
     // 노래 등록하기
@@ -75,7 +82,7 @@ public class ArtistView {
         String song = sc.nextLine();
 
         // 제일 먼저 노래명 중복체크
-        if(ar.songCheck(artist, song)) {
+        if (ar.songCheck(artist, song)) {
             System.out.println("# [" + song + "]곡은 이미 등록된 노래입니다.");
 
         } else {
@@ -84,7 +91,8 @@ public class ArtistView {
                 System.out.println("# " + artist + "님의 노래목록에 " + song + "곡이 추가되었습니다.");
                 ar.setSong2(artist, song);
                 return;
-            };
+            }
+            ;
             // 전부 포함되지 않으면 신규가수
             ar.setSong(artist, song);
             System.out.println("# " + artist + "님이 신규 등록되었습니다.");
