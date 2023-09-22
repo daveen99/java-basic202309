@@ -31,7 +31,7 @@ public class Artist {
         this.songList = songList;
     }
 
-    // 가수 정보 출력
+    // 가수 정보 출력.
     public void info() {
         System.out.println("\n# " + name + "님의 노래목록");
         makeLine();
