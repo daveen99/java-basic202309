@@ -16,6 +16,9 @@ public class ArtistView {
     }
 
     public static void start() {
+        // 세이브 파일 로드
+        ar.loadFile();
+
         int countArtist = counter();
         System.out.println("\n****** 음악 관리 프로그램 ******");
         System.out.println("# 현재 등록된 가수: " + countArtist + "명");
@@ -86,16 +89,19 @@ public class ArtistView {
             System.out.println("# [" + song + "]곡은 이미 등록된 노래입니다.");
 
         } else {
-            // 그다음에 가수명 중복체크
+            // 가수가 이미 등록된 상황이면 노래목록에 추가하기
             if (ar.artistCheck(artist)) {
                 System.out.println("# " + artist + "님의 노래목록에 " + song + "곡이 추가되었습니다.");
                 ar.setSong2(artist, song);
+                ar.autoSave();
                 return;
             }
             ;
             // 전부 포함되지 않으면 신규가수
             ar.setSong(artist, song);
             System.out.println("# " + artist + "님이 신규 등록되었습니다.");
+            ar.autoSave();
         }
+
     }
 }
