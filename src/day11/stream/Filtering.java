@@ -23,9 +23,9 @@ public class Filtering {
 //                .collect(Collectors.toList());
         //dishInVegtarian.forEach(dish -> System.out.println(dish));
         menuList.stream()
-                .filter(dish -> dish.isVegeterian())
+                .filter(dish1 -> dish1.isVegeterian())
                 .collect(toList())
-                .forEach(dish -> System.out.println(dish));
+                .forEach(System.out::println);
 
 
         System.out.println("===== 육류이면서 600칼로리 미만 =====");
